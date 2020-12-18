@@ -1,0 +1,12 @@
+{
+  "name": "mobile-auto-appium-javascript-fundamentals",
+  "version": "1.0.0",
+  "description": "Автоматизация тестирования на JavaScript + webdriverIO (Vadym Morozov) https://www.youtube.com/playlist?list=PLP1-M5OhC7yjAZ1-llDH45nxLfKKbcxGe",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
