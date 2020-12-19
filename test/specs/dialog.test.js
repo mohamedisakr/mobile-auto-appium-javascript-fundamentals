@@ -1,10 +1,38 @@
-const dialog = require("../../page-objects/dialog");
 const expect = require("chai").expect;
+const dialog = require("../../page-objects/dialog");
+const { join } = require("path");
+
+const { Orientation } = require("../../utils/enums");
+const { screenshots } = require("../../utils/constants");
 
 describe("Dialog", () => {
   // Execute a block of code before every test
   beforeEach(() => {});
 
+  it("Verify that the app adjust when orientation is switched", () => {
+    console.log(driver.getOrientation());
+    driver.setOrientation(Orientation.landscape);
+    driver.saveScreenshot(join(screenshots, "landscape.png"));
+
+    dialog.appBtn.click();
+
+    driver.setOrientation(Orientation.portrait);
+    driver.back();
+
+    driver.saveScreenshot(join(screenshots, "portrait.png"));
+  });
+
+  /*
+
+   it("verify", () => {
+    dialog.viewBtn.click();
+    driver.touchAction([
+      { action: "press", x: 500, y: 1400 },
+      { action: "moveTo", x: 500, y: 300 },
+      "release",
+    ]);
+  });
+  
   it("Verify that the text entry dialog username & password fields are editable", () => {
     dialog.appBtn.click();
     dialog.alertDialogBtn.click();
@@ -24,18 +52,7 @@ describe("Dialog", () => {
     dialog.dialogOkBtn.click();
   });
 
-  /*
-  it("verify", () => {
-    dialog.viewBtn.click();
-    driver.touchAction([
-      { action: "press", x: 500, y: 1400 },
-      { action: "moveTo", x: 500, y: 300 },
-      "release",
-    ]);
-  });
-  */
-
-  /*
+  
   it("Verify isSelected, isEnabled & isDisplayed", () => {
     dialog.viewBtn.click();
     driver.touchAction([
@@ -75,17 +92,7 @@ describe("Dialog", () => {
 
   
 
-  it("Verify that the app adjust when orientation is switched", () => {
-    console.log(driver.getOrientation());
-    driver.setOrientation("LANDSCAPE");
-
-    driver.saveScreenshot("./screenshots/landscape.png");
-    dialog.appBtn.click();
-
-    driver.setOrientation("PORTRAIT");
-    driver.back();
-    driver.saveScreenshot("./screenshots/portrait.png");
-  });
+ 
 
   it("Verify Timeouts", () => {
     //driver.setImplicitTimeout(10000);
