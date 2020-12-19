@@ -9,6 +9,23 @@ describe("Dialog", () => {
   // Execute a block of code before every test
   beforeEach(() => {});
 
+  it("Verify the repeat alarm options has attribute checked set to true when selected", () => {
+    dialog.appBtn.click();
+    dialog.alertDialogBtn.click();
+    dialog.repeatAlarmBtn.click();
+
+    let text = dialog.getWeekdayCheckbox(0).getText();
+    expect(text).equal("Every Monday");
+
+    let isChecked = dialog.getWeekdayCheckbox(0).getAttribute("checked");
+    expect(isChecked).equal("false");
+
+    dialog.getWeekdayCheckbox(0).click();
+
+    isChecked = dialog.getWeekdayCheckbox(0).getAttribute("checked");
+    expect(isChecked).equal("true");
+  });
+
   /*
 
    it("verify", () => {
@@ -101,25 +118,6 @@ describe("Dialog", () => {
   });
 
   
-
-  it("Verify the repeat alarm options has attribute checked set to true when selected", () => {
-    let isChecked, text;
-
-    dialog.appBtn.click();
-    dialog.alertDialogBtn.click();
-    dialog.repeatAlarmBtn.click();
-
-    text = dialog._weekdayCheckbox(0).getText();
-    expect(text).equal("Every Monday");
-
-    isChecked = dialog._weekdayCheckbox(0).getAttribute("checked");
-    expect(isChecked).equal("false");
-
-    dialog._weekdayCheckbox(0).click();
-
-    isChecked = dialog._weekdayCheckbox(0).getAttribute("checked");
-    expect(isChecked).equal("true");
-  });
 */
   // Execute a block of code after every test
   afterEach(() => {
