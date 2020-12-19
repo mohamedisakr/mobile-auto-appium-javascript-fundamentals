@@ -9,19 +9,6 @@ describe("Dialog", () => {
   // Execute a block of code before every test
   beforeEach(() => {});
 
-  it("Verify that the app adjust when orientation is switched", () => {
-    console.log(driver.getOrientation());
-    driver.setOrientation(Orientation.landscape);
-    driver.saveScreenshot(join(screenshots, "landscape.png"));
-
-    dialog.appBtn.click();
-
-    driver.setOrientation(Orientation.portrait);
-    driver.back();
-
-    driver.saveScreenshot(join(screenshots, "portrait.png"));
-  });
-
   /*
 
    it("verify", () => {
@@ -52,6 +39,29 @@ describe("Dialog", () => {
     dialog.dialogOkBtn.click();
   });
 
+  
+  it("Verify that the app adjust when orientation is switched", () => {
+    console.log(driver.getOrientation());
+    driver.setOrientation(Orientation.landscape);
+    driver.saveScreenshot(join(screenshots, "landscape.png"));
+
+    dialog.appBtn.click();
+
+    driver.setOrientation(Orientation.portrait);
+    driver.back();
+
+    driver.saveScreenshot(join(screenshots, "portrait.png"));
+  });
+  
+
+  it("Verify Timeouts", () => {
+    //driver.setImplicitTimeout(10000);
+    //driver.setTimeouts(10000);
+    //driver.pause(10000);
+
+    dialog.viewBtn.click();
+    //dialog.tabsBtn.click();
+  });
   
   it("Verify isSelected, isEnabled & isDisplayed", () => {
     dialog.viewBtn.click();
@@ -91,17 +101,6 @@ describe("Dialog", () => {
   });
 
   
-
- 
-
-  it("Verify Timeouts", () => {
-    //driver.setImplicitTimeout(10000);
-    //driver.setTimeouts(10000);
-    //driver.pause(10000);
-
-    dialog.viewBtn.click();
-    //dialog.tabsBtn.click();
-  });
 
   it("Verify the repeat alarm options has attribute checked set to true when selected", () => {
     let isChecked, text;
