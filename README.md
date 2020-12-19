@@ -7,7 +7,7 @@
 
 ### List all up and running emulator/devices
 
-1. type: adb devices
+type: adb devices
 
 ```
 {
