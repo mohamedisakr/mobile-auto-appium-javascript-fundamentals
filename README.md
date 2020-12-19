@@ -14,6 +14,6 @@ type: adb devices
   "platformName": "Android",
   "platformVersion": "11",
   "deviceName": "Pixel_2_API_30",
-  "app": "E:\\Projects\\mobile-auto-appium-javascript-fundamentals"
+  "app": "E:\\Projects\\mobile-auto-appium-javascript-fundamentals\\ApiDemos-debug.apk"
 }
 ```

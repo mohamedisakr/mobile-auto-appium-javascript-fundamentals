@@ -6,7 +6,7 @@ class Dialog {
     return $("~App");
   }
   get alertDialogBtn() {
-    return $('//android.widget.TextView[@content-desc="Alert Dialogs"]');
+    return $("~Alert Dialogs"); //$('//android.widget.TextView[@content-desc="Alert Dialogs"]');
   }
   get textEntryDialogBtn() {
     return $('//android.widget.Button[@content-desc="Text Entry dialog"]');
