@@ -9,21 +9,43 @@ describe("Dialog", () => {
   // Execute a block of code before every test
   beforeEach(() => {});
 
-  it("Verify the repeat alarm options has attribute checked set to true when selected", () => {
-    dialog.appBtn.click();
-    dialog.alertDialogBtn.click();
-    dialog.repeatAlarmBtn.click();
+  it("Verify isSelected, isEnabled & isDisplayed", () => {
+    dialog.viewBtn.click();
+    driver.touchAction([
+      { action: "press", x: 500, y: 1400 },
+      { action: "moveTo", x: 500, y: 300 },
+      "release",
+      { action: "press", x: 500, y: 1400 },
+      { action: "moveTo", x: 500, y: 300 },
+      "release",
+      { action: "press", x: 500, y: 1400 },
+      { action: "moveTo", x: 500, y: 300 },
+      "release",
+    ]);
 
-    let text = dialog.getWeekdayCheckbox(0).getText();
-    expect(text).equal("Every Monday");
+    dialog.tabsBtn.click();
+    dialog.contentByIdBtn.click();
 
-    let isChecked = dialog.getWeekdayCheckbox(0).getAttribute("checked");
-    expect(isChecked).equal("false");
+    let isEnabled = false;
+    let isSelected = false;
+    let isDisplayed = false;
 
-    dialog.getWeekdayCheckbox(0).click();
+    dialog.tabs.forEach((tab, index) => {
+      isEnabled = tab.isEnabled();
+      isSelected = tab.isSelected();
+      isDisplayed = tab.isDisplayed();
 
-    isChecked = dialog.getWeekdayCheckbox(0).getAttribute("checked");
-    expect(isChecked).equal("true");
+      console.log(`Tab ${index + 1}`);
+      console.log("isEnabled: ", isEnabled);
+      console.log("isSelected: ", isSelected);
+      console.log("isDisplayed: ", isDisplayed);
+
+      if (isEnabled && isSelected) {
+        console.log("Tab Details 1: ", dialog.tab1Details.isDisplayed());
+        console.log("Tab Details 2: ", dialog.tab2Details.isDisplayed());
+        console.log("Tab Details 3: ", dialog.tab3Details.isDisplayed());
+      }
+    });
   });
 
   /*
@@ -79,45 +101,25 @@ describe("Dialog", () => {
     dialog.viewBtn.click();
     //dialog.tabsBtn.click();
   });
-  
-  it("Verify isSelected, isEnabled & isDisplayed", () => {
-    dialog.viewBtn.click();
-    driver.touchAction([
-      { action: "press", x: 500, y: 1400 },
-      { action: "moveTo", x: 500, y: 300 },
-      "release",
-      { action: "press", x: 500, y: 1400 },
-      { action: "moveTo", x: 500, y: 300 },
-      "release",
-      { action: "press", x: 500, y: 1400 },
-      { action: "moveTo", x: 500, y: 300 },
-      "release",
-    ]);
 
-    dialog.tabsBtn.click();
-    dialog.contentByIdBtn.click();
+   it("Verify the repeat alarm options has attribute checked set to true when selected", () => {
+    dialog.appBtn.click();
+    dialog.alertDialogBtn.click();
+    dialog.repeatAlarmBtn.click();
 
-    let isEnabled, isSelected, isDisplayed;
+    let text = dialog.getWeekdayCheckbox(0).getText();
+    expect(text).equal("Every Monday");
 
-    for (i = 0; i < 3; i++) {
-      isEnabled = dialog.tabs[i].isEnabled();
-      isSelected = dialog.tabs[i].isSelected();
-      isDisplayed = dialog.tabs[i].isDisplayed();
+    let isChecked = dialog.getWeekdayCheckbox(0).getAttribute("checked");
+    expect(isChecked).equal("false");
 
-      console.log(`Tab ${i + 1}`);
-      console.log("isEnabled:", isEnabled);
-      console.log("isSelected:", isSelected);
-      console.log("isDisplayed:", isDisplayed);
+    dialog.getWeekdayCheckbox(0).click();
 
-      if (isEnabled && isSelected) {
-        console.log("Tab Details 1:", dialog.tab1Details.isDisplayed());
-        console.log("Tab Details 2:", dialog.tab2Details.isDisplayed());
-        console.log("Tab Details 3:", dialog.tab3Details.isDisplayed());
-      }
-    }
+    isChecked = dialog.getWeekdayCheckbox(0).getAttribute("checked");
+    expect(isChecked).equal("true");
   });
-
   
+    
 */
   // Execute a block of code after every test
   afterEach(() => {
